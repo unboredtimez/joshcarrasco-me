@@ -32,6 +32,13 @@ main {
   padding: 0 10% 0 10%;
 }
 
+/* Styling my article element */
+
+article {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
 /* Only styling h3 and p elements in main*/
 
 main h3, p {
@@ -53,8 +60,6 @@ hr {
   width:50%;
   height:5px;
   background-color:black;
-  margin-top: 5%;
-  margin-bottom: 5%;
   border-radius: 80%;
 }
 
