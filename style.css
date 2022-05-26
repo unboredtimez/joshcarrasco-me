@@ -1,15 +1,18 @@
 body {
-  background-color: #94DCE8;
+  background: #94DCE8;
   margin: 0;
+  font-family: Georgia, serif;
 }
 
 header {
-  background-color: #048081;
+  background: #048081;
   padding: 10px;
-  font-style: Georgia, serif;
 }
 header h1, h2{
   text-align: center;
+}
+header h1 {
+  font-size: 45px;
 }
 
 main h3, p {
@@ -29,6 +32,11 @@ hr {
   margin-top: 5%;
   margin-bottom: 5%;
   border-radius: 80%;
+}
+
+footer {
+  padding: 10%;
+  background: #048081;
 }
 
 .center-img {
