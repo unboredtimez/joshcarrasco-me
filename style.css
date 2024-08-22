@@ -1,114 +1,138 @@
-/* This is setting ALL HTML elements with border-box sizing ... just in case */
-
 * {
   box-sizing: border-box;
 }
 
-/* Setting some styling for all elements in my body */
-
 body {
-  background: #94DCE8;
-  margin: 0;
-  font-family: Georgia, serif;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  background-image: linear-gradient(to right, #f9f9f9 1px, transparent 1px),
+                  linear-gradient(to bottom, #f9f9f9 1px, transparent 1px);
+  background-size: 10px 10px;
 }
-
-/* Setting some styling for all elements in Header */
 
 header {
-  background: #048081;
+  background: linear-gradient(to bottom, #3498DB, #2eb7cc);
+  background-size: 100% 200px;
+  background-position: 0% 100%;
   padding: 10px;
   text-align: center;
+  animation: fadeIn 2s;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Only styling the h1 element in header */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 header h1 {
   font-size: 60px;
+  color: #FFFFFF; /* White text on blue background */
 }
-
-/* Styling all elements in main */
 
 main {
   padding: 0 10% 0 10%;
 }
 
-/* Styling my article element */
+section {
+  margin-bottom: 20px;
+}
 
 article {
   margin-top: 5%;
   margin-bottom: 5%;
 }
 
-/* Only styling h3 and p elements in main*/
-
-main h3, p {
-  text-align: center;
+h1, h2, h3 {
+  animation: bounce 0.6s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+  color: #2196F3;
 }
 
-/* Styling ul and ol in main */
-
-main ul, ol {
-  
-  /* This allows my lists to have the bullets or numbers alongside the rest of the content */
-  
-  list-style-position: inside;
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-/* styling my hr element */
-
-hr {
-  width:50%;
-  height:5px;
-  background-color:black;
-  border-radius: 80%;
+p {
+  font-size: 18px;
+  color: #333333; /* A medium gray for text */
 }
 
-/* Styling my footer element */
+/* Desktop view */
+@media (min-width: 768px) {
+  .activity-container {
+    /* styles for desktop view */
 
-footer {
-  padding: 2%;
-  background: #048081;
-  font-weight: bold;
+  }
+  .activity-gif {
+    /* styles for desktop view */
+  }
 }
 
-/* styling my links */
+/* Mobile view */
+@media (max-width: 767px) {
+  .activity-container {
+    /* styles for mobile view */
+  }
+  .activity-gif {
+    display: none; /* hide GIFs by default on mobile */
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border-bottom: none;
+}
 
 a {
-  font-weight: bold;
-}
-
-a:link {
-  color: #0031A3;
-}
-
-a:visited {
-  color: #ad42f5;
+  text-decoration: none;
+  color: #2196F3;
 }
 
 a:hover {
-  color: #9c1111;
+  color: #1976D2;
 }
 
-a:active {
-  color: #fff538;
+.center-container {
+  text-align: left;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
 }
-
-/* creating classes to use in my html elements */
-
-/* This class allows me to center an image to the page */
 
 .center-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
-  width: 25%;
-  border-radius: 50%;
 }
 
-/* this class allows me to center any container to the page */
-
-.center-container {
-  display: flex;
-  justify-content: center;
+footer {
+  background: #048081;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
 }
