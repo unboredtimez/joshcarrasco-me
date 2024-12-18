@@ -28,3 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
       observer.observe(element);
     });
   });
+
+  const backToTopButton = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) { // adjust this value to your liking
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
