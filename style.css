@@ -1,138 +1,240 @@
-* {
+html {
   box-sizing: border-box;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  color: #333;
-  background-image: linear-gradient(to right, #f9f9f9 1px, transparent 1px),
-                  linear-gradient(to bottom, #f9f9f9 1px, transparent 1px);
-  background-size: 10px 10px;
-}
-
-header {
-  background: linear-gradient(to bottom, #3498DB, #2eb7cc);
-  background-size: 100% 200px;
-  background-position: 0% 100%;
-  padding: 10px;
-  text-align: center;
-  animation: fadeIn 2s;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-header h1 {
-  font-size: 60px;
-  color: #FFFFFF; /* White text on blue background */
-}
-
-main {
-  padding: 0 10% 0 10%;
-}
-
-section {
-  margin-bottom: 20px;
-}
-
-article {
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
-h1, h2, h3 {
-  animation: bounce 0.6s ease-in-out;
-  font-family: 'Montserrat', sans-serif;
-  color: #2196F3;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-p {
-  font-size: 18px;
-  color: #333333; /* A medium gray for text */
-}
-
-/* Desktop view */
-@media (min-width: 768px) {
-  .activity-container {
-    /* styles for desktop view */
-
-  }
-  .activity-gif {
-    /* styles for desktop view */
-  }
-}
-
-/* Mobile view */
-@media (max-width: 767px) {
-  .activity-container {
-    /* styles for mobile view */
-  }
-  .activity-gif {
-    display: none; /* hide GIFs by default on mobile */
-  }
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-li:last-child {
-  border-bottom: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  line-height: 1.6;
 }
 
 a {
+  color: #007aff;
   text-decoration: none;
-  color: #2196F3;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #1976D2;
+  color: #005ace;
 }
 
-.center-container {
-  text-align: left;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: inline-block;
+.site-header {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
 }
 
-.center-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-footer {
-  background: #048081;
-  padding: 10px;
+.brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-weight: 500;
+  color: #333333;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #000;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
   text-align: center;
+  background: #f9f9f9;
+  /* Initially hidden and slightly translated for the fade-in effect */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  border: 2px solid #ddd;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #007aff;
   color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.cta-btn:hover {
+  background: #005ace;
+}
+
+.work-section,
+.about-section,
+.contact-section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  /* Initially hidden and slightly translated for the fade-in effect */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.work-section h2,
+.about-section h2,
+.contact-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media(min-width: 768px) {
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.work-item {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: left;
+  transition: box-shadow 0.2s ease, opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.work-item:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.work-img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.work-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.work-item p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.work-link {
+  font-weight: 500;
+  color: #007aff;
+  transition: color 0.2s ease;
+}
+
+.work-link:hover {
+  color: #005ace;
+}
+
+.about-section p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+.contact-section p {
+  font-size: 1.125rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.contact-link {
+  font-size: 1.125rem;
+  display: inline-block;
+  background: #007aff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.contact-link:hover {
+  background: #005ace;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+/* 
+ * Fade-in class for when elements come into view 
+ * Add this class via JavaScript when the element is intersecting 
+ * the viewport (using IntersectionObserver). 
+ */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

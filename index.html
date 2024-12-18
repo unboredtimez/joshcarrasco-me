@@ -1,54 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>About Joshua Carrasco</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Montserrat:400,700" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Professional portfolio of Josh Carrasco."/>
+  <title>Josh Carrasco - Software Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <header>
-    <h1>About Joshua Carrasco</h1>
+  <header class="site-header">
+    <nav class="nav-bar">
+      <a href="./" class="brand">Josh Carrasco</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
-    <section>
-      <article>
-        <h2>Hi! I'm Josh Carrasco.</h2>
-        <p>I'm a software engineer in Columbus, Ohio</p>
-        <p>During my free time I enjoy the following</p>
-        <div class="center-container activity-container">
-          <ul>
-            <img class="activity-gif" src="photos/enjoying_outdoors.gif" alt="Activity GIF">
-            <li>Going out to events with my wife</li>
-            <li>Playing video games</li>
-            <li>Watching Anime</li>
-            <li>Cuddling with my cat</li>
-          </ul>
-        </div>
-      </article>
+    <section class="hero">
+      <div class="hero-content">
+        <img src="photos/josh_c.jpg" alt="Portrait of Josh Carrasco" class="hero-img"/>
+        <h1>Hi, I’m Josh Carrasco</h1>
+        <p class="tagline">Transforming complex challenges into streamlined solutions through robust engineering and proactive monitoring.</p>
+        <a href="#work" class="cta-btn">View My Work</a>
+      </div>
     </section>
-    <section>
-      <article>
-        <h2>About Josh</h2>
-        <div>
-          <p>I've had a passion for technology for as long as I can remember. As I child I remember taking apart my family computer and putting it back together because of my curiosity for how it worked. That same curiosity still follows me as I now dissect software logs and code to identify issues and build solutions.</p>
-          <p>I strongly believe in working as a team to achieve greatness. With that being said I also enjoy team based activities like escape rooms and board games. Playing video games is a great way for me to relax and wind down after a hard day of work.</p>
-        </div>
-      </article>
+
+    <section id="work" class="work-section">
+      <h2>My Projects</h2>
+      <div class="work-grid">
+        <article class="work-item">
+          <img src="photos/project1.png" alt="Project 1 screenshot" class="work-img"/>
+          <h3>Restaurant Reservation System</h3>
+          <p>This is a Restaurant Reservation System. This system allows the restaurant to create, update, view, and delete reservations, as well as seat customers at various tables within the restaurant.</p>
+          <a href="https://github.com/unboredtimez/starter-restaurant-reservation/blob/main/README.md" target="_blank" class="work-link">View Project →</a>
+        </article>
+
+        <article class="work-item">
+          <img src="photos/project2.png" alt="Project 2 screenshot" class="work-img"/>
+          <h3>Vacation Rental Website</h3>
+          <p>Thinkfulbnb is a vacation rental website that allows people to rent out their homes to people who are seeking short-term accommodations in that locale.</p>
+          <a href="https://github.com/unboredtimez/starter-thinkfulbnb" target="_blank" class="work-link">View Project →</a>
+        </article>
+
+        <article class="work-item">
+          <img src="photos/project3.png" alt="Project 3 screenshot" class="work-img"/>
+          <h3>Flashcard App</h3>
+          <p>Share a project that demonstrates innovation, complexity, or broad impact.</p>
+          <a href="#" target="_blank" class="work-link">View Project →</a>
+        </article>
+      </div>
     </section>
-    <section>
-      <article>
-        <h2>Contact Josh</h2>
-        <p>Feel free to reach out!</p>
-        <div class="center-container">
-          <ul>
-            <li><a href="https://www.linkedin.com/in/joshua-carrasco-jc" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/unboredtimez" target="_blank">GitHub</a></li>
-          </ul>
-        </div>
-      </article>
+
+    <section id="about" class="about-section">
+      <h2>About Me</h2>
+      <p>I am a software engineer specializing in developing robust, scalable solutions for complex systems. My expertise spans Java-based application analysis, automation of monitoring and alerting systems, and scripting with tools like Splunk SPL, Bash, and Grafana APIs. I have significant experience implementing SRE best practices, including defining and tracking SLOs/SLIs, enhancing observability, and integrating CI/CD pipelines for seamless deployments. I excel in maintaining and improving tools, troubleshooting critical issues, and mentoring teams to ensure operational excellence in high-availability environments. With a passion for continuous learning, I drive innovation while optimizing performance and reliability.</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Get in Touch</h2>
+      <p>If you’d like to discuss a project, collaboration, or just say hello, feel free to reach out:</p>
+      <a href="mailto:josh0371@gmail.com" class="contact-link">josh0371@gmail.com</a>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2024 Josh Carrasco. All rights reserved.</p>
+  </footer>
+
+  <!-- Include the scripts.js file which contains the Intersection Observer logic -->
+  <script src="scripts.js"></script>
 </body>
 </html>
