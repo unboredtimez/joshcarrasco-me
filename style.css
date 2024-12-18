@@ -238,3 +238,15 @@ a:hover {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
