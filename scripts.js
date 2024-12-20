@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const backToTopButton = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 500) { // adjust this value to your liking
+  if (window.scrollY > 200) {
     backToTopButton.style.display = 'block';
   } else {
     backToTopButton.style.display = 'none';
