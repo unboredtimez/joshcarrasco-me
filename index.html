@@ -1,81 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Professional portfolio of Josh Carrasco."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional portfolio of Josh Carrasco, software engineer specializing in robust, scalable systems and observability." />
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <title>Josh Carrasco - Software Engineer</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="photos/favicon.ico" />
+
+  <!-- Anti-flash: apply theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"Segoe UI"', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', '"Helvetica Neue"', 'sans-serif'],
+          },
+          colors: {
+            accent: {
+              light: '#0071e3',
+              dark: '#2997ff',
+            },
+          },
+          borderRadius: {
+            '2xl': '1.25rem',
+            '3xl': '1.75rem',
+          },
+          boxShadow: {
+            soft: '0 4px 24px rgba(0,0,0,0.06)',
+            'soft-lg': '0 18px 50px rgba(0,0,0,0.12)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header class="site-header">
-    <nav class="nav-bar">
-      <a href="./" class="brand">Josh Carrasco</a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<body class="font-sans bg-[#fbfbfd] text-[#1d1d1f] antialiased dark:bg-black dark:text-[#f5f5f7] transition-colors duration-300">
+
+  <!-- Navigation -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 backdrop-blur-xl bg-white/70 dark:bg-black/60 border-b border-black/5 dark:border-white/10 sm:rounded-b-2xl">
+      <a href="#top" class="text-lg font-semibold tracking-tight text-[#1d1d1f] dark:text-white">Josh Carrasco</a>
+
+      <div class="flex items-center gap-2">
+        <!-- Desktop links -->
+        <ul class="hidden items-center gap-7 sm:flex">
+          <li><a href="#work" class="text-sm font-medium text-[#1d1d1f]/80 hover:text-accent-light dark:text-[#f5f5f7]/80 dark:hover:text-accent-dark transition-colors">Work</a></li>
+          <li><a href="#about" class="text-sm font-medium text-[#1d1d1f]/80 hover:text-accent-light dark:text-[#f5f5f7]/80 dark:hover:text-accent-dark transition-colors">About</a></li>
+          <li><a href="#contact" class="text-sm font-medium text-[#1d1d1f]/80 hover:text-accent-light dark:text-[#f5f5f7]/80 dark:hover:text-accent-dark transition-colors">Contact</a></li>
+        </ul>
+
+        <!-- Theme toggle -->
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode"
+          class="ml-1 grid h-9 w-9 place-items-center rounded-full text-[#1d1d1f] hover:bg-black/5 dark:text-[#f5f5f7] dark:hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light dark:focus-visible:ring-accent-dark">
+          <svg id="icon-sun" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+          <svg id="icon-moon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+          class="grid h-9 w-9 place-items-center rounded-full text-[#1d1d1f] hover:bg-black/5 dark:text-[#f5f5f7] dark:hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light dark:focus-visible:ring-accent-dark sm:hidden">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
     </nav>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden mx-auto max-w-6xl px-5 sm:hidden">
+      <ul class="mt-1 flex flex-col gap-1 rounded-2xl border border-black/5 bg-white/90 p-2 backdrop-blur-xl shadow-soft dark:border-white/10 dark:bg-black/80">
+        <li><a href="#work" class="block rounded-xl px-4 py-3 text-sm font-medium text-[#1d1d1f] hover:bg-black/5 dark:text-[#f5f5f7] dark:hover:bg-white/10">Work</a></li>
+        <li><a href="#about" class="block rounded-xl px-4 py-3 text-sm font-medium text-[#1d1d1f] hover:bg-black/5 dark:text-[#f5f5f7] dark:hover:bg-white/10">About</a></li>
+        <li><a href="#contact" class="block rounded-xl px-4 py-3 text-sm font-medium text-[#1d1d1f] hover:bg-black/5 dark:text-[#f5f5f7] dark:hover:bg-white/10">Contact</a></li>
+      </ul>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <img src="photos/josh_c.jpg" alt="Portrait of Josh Carrasco" class="hero-img"/>
-        <h1>Hi, I’m Josh Carrasco</h1>
-        <p class="tagline">Transforming complex challenges into streamlined solutions through robust engineering and proactive monitoring.</p>
-        <a href="#work" class="cta-btn">View My Work</a>
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero reveal relative overflow-hidden px-6 pt-36 pb-24 text-center sm:pt-44 sm:pb-32">
+      <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#f5f5f7] to-[#fbfbfd] dark:from-[#1c1c1e] dark:to-black"></div>
+      <div class="mx-auto max-w-2xl">
+        <img src="photos/josh_c.jpg" alt="Portrait of Josh Carrasco"
+          class="mx-auto mb-8 h-36 w-36 rounded-full object-cover ring-1 ring-black/10 shadow-soft dark:ring-white/15" />
+        <h1 class="text-4xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white sm:text-6xl">Hi, I'm Josh Carrasco</h1>
+        <p class="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[#1d1d1f]/70 dark:text-[#f5f5f7]/70 sm:text-xl">
+          Transforming complex challenges into streamlined solutions through robust engineering and proactive monitoring.
+        </p>
+        <a href="#work"
+          class="mt-9 inline-flex items-center justify-center rounded-full bg-accent-light px-7 py-3 text-base font-medium text-white shadow-soft transition-all hover:bg-[#0077ed] hover:shadow-soft-lg dark:bg-accent-dark dark:text-black dark:hover:bg-[#54adff] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-light dark:focus-visible:ring-accent-dark dark:focus-visible:ring-offset-black">
+          View My Work
+        </a>
       </div>
     </section>
 
-    <section id="work" class="work-section">
-      <h2>My Projects</h2>
-      <div class="work-grid">
-        <article class="work-item">
-          <img src="photos/project1.png" alt="Project 1 screenshot" class="work-img"/>
-          <h3>Restaurant Reservation System</h3>
-          <p>This is a Restaurant Reservation System. This system allows the restaurant to create, update, view, and delete reservations, as well as seat customers at various tables within the restaurant.</p>
-          <a href="https://github.com/unboredtimez/starter-restaurant-reservation/blob/main/README.md" target="_blank" class="work-link">View Project →</a>
+    <!-- Work -->
+    <section id="work" class="reveal mx-auto max-w-6xl scroll-mt-24 px-6 py-20 sm:py-28">
+      <h2 class="text-center text-3xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white sm:text-4xl">My Projects</h2>
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-black/5 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg dark:border-white/10 dark:bg-[#1c1c1e]">
+          <img src="photos/project1.png" alt="Restaurant Reservation System screenshot" loading="lazy" class="h-44 w-full object-cover" />
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-lg font-semibold text-[#1d1d1f] dark:text-white">Restaurant Reservation System</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-[#1d1d1f]/70 dark:text-[#f5f5f7]/65">This is a Restaurant Reservation System. This system allows the restaurant to create, update, view, and delete reservations, as well as seat customers at various tables within the restaurant.</p>
+            <a href="https://github.com/unboredtimez/starter-restaurant-reservation/blob/main/README.md" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-light hover:gap-2 dark:text-accent-dark transition-all">View Project <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </article>
 
-        <article class="work-item">
-          <img src="photos/project2.png" alt="Project 2 screenshot" class="work-img"/>
-          <h3>Vacation Rental Website</h3>
-          <p>Thinkfulbnb is a vacation rental website that allows people to rent out their homes to people who are seeking short-term accommodations in that locale.</p>
-          <a href="https://github.com/unboredtimez/starter-thinkfulbnb" target="_blank" class="work-link">View Project →</a>
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-black/5 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg dark:border-white/10 dark:bg-[#1c1c1e]">
+          <img src="photos/project2.png" alt="Vacation Rental Website screenshot" loading="lazy" class="h-44 w-full object-cover" />
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-lg font-semibold text-[#1d1d1f] dark:text-white">Vacation Rental Website</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-[#1d1d1f]/70 dark:text-[#f5f5f7]/65">Thinkfulbnb is a vacation rental website that allows people to rent out their homes to people who are seeking short-term accommodations in that locale.</p>
+            <a href="https://github.com/unboredtimez/starter-thinkfulbnb" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-light hover:gap-2 dark:text-accent-dark transition-all">View Project <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </article>
 
-        <article class="work-item">
-          <img src="photos/project3.png" alt="Project 3 screenshot" class="work-img"/>
-          <h3>Flashcard App</h3>
-          <p>Share a project that demonstrates innovation, complexity, or broad impact.</p>
-          <a href="https://github.com/unboredtimez/Project-_Flashcards-_Qualified-Joshua_Carrasco-Solution" target="_blank" class="work-link">View Project →</a>
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-black/5 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg dark:border-white/10 dark:bg-[#1c1c1e]">
+          <img src="photos/project3.png" alt="Flashcard App screenshot" loading="lazy" class="h-44 w-full object-cover" />
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-lg font-semibold text-[#1d1d1f] dark:text-white">Flashcard App</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-[#1d1d1f]/70 dark:text-[#f5f5f7]/65">Share a project that demonstrates innovation, complexity, or broad impact.</p>
+            <a href="https://github.com/unboredtimez/Project-_Flashcards-_Qualified-Joshua_Carrasco-Solution" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-light hover:gap-2 dark:text-accent-dark transition-all">View Project <span aria-hidden="true">&rarr;</span></a>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="about" class="about-section">
-      <h2>About Me</h2>
-      <p>I am a software engineer specializing in developing robust, scalable solutions for complex systems. My expertise spans Java-based and Javascript-based application analysis, automation of monitoring and alerting systems with tools like Splunk, Grafana and Dynatrace. As well as scripting with PowerShell, Batch and Javascript. I have significant experience implementing SRE best practices, including defining and tracking SLOs/SLIs, enhancing observability, and integrating CI/CD pipelines for seamless deployments. I excel in maintaining and improving tools, troubleshooting critical issues, and mentoring teams to ensure operational excellence in high-availability environments. With a passion for continuous learning, I drive innovation while optimizing performance and reliability.</p>
+    <!-- About -->
+    <section id="about" class="reveal scroll-mt-24 bg-[#f5f5f7] px-6 py-20 dark:bg-[#1c1c1e] sm:py-28">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-center text-3xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white sm:text-4xl">About Me</h2>
+
+        <p class="mx-auto mt-8 max-w-2xl text-center text-xl font-medium leading-relaxed text-[#1d1d1f] dark:text-[#f5f5f7]">
+          I am a software engineer specializing in developing robust, scalable solutions for complex systems.
+        </p>
+
+        <div class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-black/5 bg-white p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-black/40">
+            <h3 class="text-center text-lg font-semibold text-accent-light dark:text-accent-dark">Development &amp; Analysis</h3>
+            <ul class="mt-4 space-y-3 text-sm text-[#1d1d1f]/75 dark:text-[#f5f5f7]/75">
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Java-based application development</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>JavaScript-based application analysis</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Scripting with PowerShell, Batch, and JavaScript</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-black/5 bg-white p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-black/40">
+            <h3 class="text-center text-lg font-semibold text-accent-light dark:text-accent-dark">Monitoring &amp; Observability</h3>
+            <ul class="mt-4 space-y-3 text-sm text-[#1d1d1f]/75 dark:text-[#f5f5f7]/75">
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Automation with Splunk, Grafana, and Dynatrace</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Implementing SRE best practices</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Defining and tracking SLOs/SLIs</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-black/5 bg-white p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1 dark:border-white/10 dark:bg-black/40">
+            <h3 class="text-center text-lg font-semibold text-accent-light dark:text-accent-dark">DevOps &amp; Leadership</h3>
+            <ul class="mt-4 space-y-3 text-sm text-[#1d1d1f]/75 dark:text-[#f5f5f7]/75">
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>CI/CD pipeline integration</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Tool maintenance and troubleshooting</li>
+              <li class="flex gap-2"><span class="text-accent-light dark:text-accent-dark" aria-hidden="true">&#9656;</span>Team mentoring and operational excellence</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 rounded-2xl bg-gradient-to-br from-[#0a7d4f] to-[#0a8fa8] p-8 text-center shadow-soft">
+          <p class="text-lg leading-relaxed text-white"><strong class="font-semibold">Passion for Innovation:</strong> I drive continuous learning and innovation while optimizing performance and reliability in high-availability environments.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="contact-section">
-      <h2>Get in Touch</h2>
-      <p>If you’d like to discuss a project, collaboration, or just say hello, feel free to reach out:</p>
-      <a href="mailto:josh0371@gmail.com" class="contact-link">josh0371@gmail.com</a>
-      <a href="https://www.linkedin.com/in/joshua-carrasco-jc/" target="_blank" class="contact-link">LinkedIn</a>
+    <!-- Contact -->
+    <section id="contact" class="reveal scroll-mt-24 px-6 py-20 text-center sm:py-28">
+      <div class="mx-auto max-w-2xl">
+        <h2 class="text-3xl font-semibold tracking-tight text-[#1d1d1f] dark:text-white sm:text-4xl">Get in Touch</h2>
+        <p class="mx-auto mt-5 max-w-xl text-lg text-[#1d1d1f]/70 dark:text-[#f5f5f7]/70">If you'd like to discuss a project, collaboration, or just say hello, feel free to reach out:</p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href="mailto:josh0371@gmail.com"
+            class="inline-flex w-full items-center justify-center rounded-full bg-accent-light px-7 py-3 text-base font-medium text-white shadow-soft transition-all hover:bg-[#0077ed] hover:shadow-soft-lg dark:bg-accent-dark dark:text-black dark:hover:bg-[#54adff] sm:w-auto">josh0371@gmail.com</a>
+          <a href="https://www.linkedin.com/in/joshua-carrasco-jc/" target="_blank" rel="noopener"
+            class="inline-flex w-full items-center justify-center rounded-full border border-black/10 bg-white px-7 py-3 text-base font-medium text-[#1d1d1f] shadow-soft transition-all hover:bg-black/5 dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:w-auto">LinkedIn</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <button id="back-to-top" style="display: none;">Back to Top</button>
+  <button id="back-to-top" aria-label="Back to top"
+    class="fixed bottom-6 right-6 z-40 hidden h-11 w-11 place-items-center rounded-full bg-[#1d1d1f]/80 text-white shadow-soft-lg backdrop-blur transition-all hover:bg-[#1d1d1f] dark:bg-white/15 dark:text-white dark:hover:bg-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-light dark:focus-visible:ring-accent-dark">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
 
-  <footer class="site-footer">
-    <p>&copy; 2024 Josh Carrasco. All rights reserved.</p>
+  <footer class="border-t border-black/5 px-6 py-10 text-center dark:border-white/10">
+    <p class="text-sm text-[#1d1d1f]/50 dark:text-[#f5f5f7]/50">&copy; 2024 Josh Carrasco. All rights reserved.</p>
   </footer>
 
-  <!-- Include the scripts.js file which contains the Intersection Observer logic -->
   <script src="scripts.js"></script>
 </body>
 </html>
