@@ -1,3 +1,23 @@
+/*
+ * Theme-toggle icon swap, driven by the `.dark` class on <html> with id
+ * selectors so it wins on specificity and works even if the Tailwind CDN
+ * is slow, blocked, or its `dark:`/`hidden` utilities haven't applied yet
+ * (notably in Safari with content blockers / ITP).
+ */
+#icon-sun,
+#icon-moon {
+  display: none;
+}
+
+/* In dark mode show the sun (tap to switch to light); otherwise the moon. */
+html.dark #icon-sun {
+  display: block;
+}
+
+html:not(.dark) #icon-moon {
+  display: block;
+}
+
 /* Reveal-on-scroll animation. Tailwind handles the rest of the styling. */
 .reveal {
   opacity: 0;

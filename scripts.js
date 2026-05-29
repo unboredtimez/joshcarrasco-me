@@ -1,18 +1,9 @@
-// Theme toggle: persist preference and keep the correct icon visible.
+// Theme toggle: flip the `dark` class on <html> and persist the choice.
+// The sun/moon icon swap is handled in CSS (keyed off `html.dark`), so it
+// stays correct even if the Tailwind CDN hasn't finished loading.
 (function () {
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
-  const sun = document.getElementById('icon-sun');
-  const moon = document.getElementById('icon-moon');
-
-  function syncIcons() {
-    const isDark = root.classList.contains('dark');
-    // In dark mode, offer the sun (switch to light); in light mode, offer the moon.
-    if (sun) sun.classList.toggle('hidden', !isDark);
-    if (moon) moon.classList.toggle('hidden', isDark);
-  }
-
-  syncIcons();
 
   if (toggle) {
     toggle.addEventListener('click', () => {
@@ -20,22 +11,29 @@
       try {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
       } catch (e) {}
-      syncIcons();
     });
   }
 
   // Follow system changes only when the user hasn't made an explicit choice.
-  const media = window.matchMedia('(prefers-color-scheme: dark)');
-  media.addEventListener('change', (e) => {
+  function onSystemChange(e) {
     let stored = null;
     try {
       stored = localStorage.getItem('theme');
     } catch (err) {}
     if (!stored) {
       root.classList.toggle('dark', e.matches);
-      syncIcons();
     }
-  });
+  }
+
+  try {
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    if (media.addEventListener) {
+      media.addEventListener('change', onSystemChange);
+    } else if (media.addListener) {
+      // Safari < 14 fallback.
+      media.addListener(onSystemChange);
+    }
+  } catch (e) {}
 })();
 
 // Mobile menu open/close.
